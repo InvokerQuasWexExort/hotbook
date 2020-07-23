@@ -1,5 +1,7 @@
 package com.learn.hotbook.crawler;
 
+import com.learn.hotbook.mapper.BookMapper;
+import com.learn.hotbook.domain.Book;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -8,14 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+
 @Component
 public class QidianCrawler {
+
+    @Autowired
+    private BookMapper bookMapper;
 
     @Autowired
     private PhantomJsTemplate template;
 
     public void parseHtml() {
-        //
+        Book book = bookMapper.findById(1);
+        System.out.println(book.getName());
         String html = template.catchHtml("https://www.qidian.com/");
         if (!StringUtils.isEmpty(html)) {
             Document document = Jsoup.parse(html);
