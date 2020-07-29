@@ -14,6 +14,7 @@ public class Book {
     private String name;//书名
     private String author;//作者
     private String source;//来源
+    private int sourceId;//来源id
     private String url;//原文链接
     private String tag;//标签
     private String channel;//频道
@@ -32,7 +33,7 @@ public class Book {
     public static final int UPDATE_HALF_YEAR = 3;//半年以内
     public static final int UPDATE_OTHER = 4;//其他
     private double score;//分数
-    private int cid;//分类id
+    private int classId;//分类id
     private Date createTime;//创建时间
 
     public int getId() {
@@ -83,12 +84,12 @@ public class Book {
         this.score = score;
     }
 
-    public int getCid() {
-        return cid;
+    public int getClassId() {
+        return classId;
     }
 
-    public void setCid(int cid) {
-        this.cid = cid;
+    public void setClassId(int classId) {
+        this.classId = classId;
     }
 
     public String getTag() {
@@ -153,5 +154,13 @@ public class Book {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public int getSourceId() {
+        return sourceId;
+    }
+
+    public void setSourceId(int sourceId) {
+        this.sourceId = sourceId;
     }
 }
