@@ -14,9 +14,9 @@ import org.springframework.util.StringUtils;
 
 
 @Component
-public class QidianCrawler {
+public class CrawlerEngine {
 
-    private static final Logger LOG = LoggerFactory.getLogger(QidianCrawler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CrawlerEngine.class);
 
     @Autowired
     private BookMapper bookMapper;
