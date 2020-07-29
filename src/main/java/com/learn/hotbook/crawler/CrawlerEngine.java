@@ -33,8 +33,12 @@ public class CrawlerEngine {
                 if (elements != null && elements.size() > 0) {
                     for (int i = 0; i < elements.size(); i++) {
                         Element element = elements.get(i);
+                        String name = parseElement(element,task.getNamePath());
+                        String author = parseElement(element,task.getAuthorPath());
+                        String url = parseElement(element,task.getUrlPath());
+                        String ticket = parseElement(element,task.getTicketPath());
                         Book book = new Book();
-                        String name = element.select(task.getNamePath()).html();
+                        book.setName(name);
                         System.out.println(name);
                     }
                 } else {
@@ -46,5 +50,19 @@ public class CrawlerEngine {
             }
 
         }
+    }
+
+    private String parseElement(Element element, String cssPath) {
+        String result = "";
+        String pre = cssPath.substring(0, 4);
+        switch (pre) {
+            case "html":
+                result = element.select(cssPath.substring(5)).html();
+                break;
+            case "attr":
+                result = element.select(cssPath.substring(5, cssPath.lastIndexOf(":")))
+                        .attr(cssPath.substring(cssPath.lastIndexOf(":") + 1));
+        }
+        return result;
     }
 }

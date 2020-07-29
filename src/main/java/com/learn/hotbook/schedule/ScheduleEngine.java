@@ -11,8 +11,8 @@ public class ScheduleEngine {
     @Autowired
     private CrawlerEngine crawler;
 
-    @Scheduled(fixedRate = 1000 * 60 * 60)
-    protected void excute() {
-        crawler.parseHtml();
-    }
+//    @Scheduled(fixedRate = 1000 * 60 * 60)
+//    protected void excute() {
+//        crawler.parseHtml();
+//    }
 }
