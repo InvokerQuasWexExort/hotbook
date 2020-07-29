@@ -1,6 +1,6 @@
 package com.learn.hotbook.schedule;
 
-import com.learn.hotbook.crawler.QidianCrawler;
+import com.learn.hotbook.crawler.CrawlerEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class ScheduleEngine {
 
     @Autowired
-    private QidianCrawler crawler;
+    private CrawlerEngine crawler;
 
     @Scheduled(fixedRate = 1000 * 60 * 60)
     protected void excute() {

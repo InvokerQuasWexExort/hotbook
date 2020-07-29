@@ -1,5 +1,7 @@
 package com.learn.hotbook.crawler;
 
+import com.alibaba.fastjson.JSONObject;
+import com.learn.hotbook.domain.Task;
 import com.learn.hotbook.mapper.BookMapper;
 import com.learn.hotbook.domain.Book;
 import org.jsoup.Jsoup;
@@ -19,23 +21,30 @@ public class CrawlerEngine {
     private static final Logger LOG = LoggerFactory.getLogger(CrawlerEngine.class);
 
     @Autowired
-    private BookMapper bookMapper;
-
-    @Autowired
     private PhantomJsTemplate template;
 
-    public void parseHtml() {
-        Book book = bookMapper.findById(1);
-        System.out.println(book.getName());
-        String html = template.catchHtml("https://www.qidian.com/");
+    public void parseHtml(Task task) {
+        LOG.info("CrawlerEngine start parse=====>" + JSONObject.toJSONString(task));
+        String html = template.catchHtml(task.getUrl());
         if (!StringUtils.isEmpty(html)) {
             Document document = Jsoup.parse(html);
-            Elements elements = document.select("div.book-list-wrap.mr30.fl div.book-list ul li");
-            for (int i = 0; i <elements.size() ; i++) {
-                Element element = elements.get(i);
-                String name = element.select("a.name").html();
-                System.out.println(name);
+            try {
+                Elements elements = document.select(task.getCssQuery());
+                if (elements != null && elements.size() > 0) {
+                    for (int i = 0; i < elements.size(); i++) {
+                        Element element = elements.get(i);
+                        Book book = new Book();
+                        String name = element.select(task.getNamePath()).html();
+                        System.out.println(name);
+                    }
+                } else {
+                    LOG.info("CrawlerEngine parse error,taskId=====>" + task.getId());
+                }
+            } catch (Exception e) {
+                LOG.error("CrawlerEngine parse error,taskId=====>" + task.getId(), e);
+                e.printStackTrace();
             }
+
         }
     }
 }

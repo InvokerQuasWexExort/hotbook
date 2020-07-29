@@ -1,5 +1,7 @@
 package com.learn.hotbook.domain;
 
+import java.util.Date;
+
 public class Task {
 
     private int id;
@@ -11,6 +13,56 @@ public class Task {
     private String urlPath;//原文链接路径
     private String authorPath;//作者路径
     private String ticketPath;//月票路径
+    private Date createTime;//创建时间
+    private String coverPath;//封面图路径
+
+    public String getCssQuery() {
+        return cssQuery;
+    }
+
+    public void setCssQuery(String cssQuery) {
+        this.cssQuery = cssQuery;
+    }
+
+    public String getNamePath() {
+        return namePath;
+    }
+
+    public void setNamePath(String namePath) {
+        this.namePath = namePath;
+    }
+
+    public String getUrlPath() {
+        return urlPath;
+    }
+
+    public void setUrlPath(String urlPath) {
+        this.urlPath = urlPath;
+    }
+
+    public String getAuthorPath() {
+        return authorPath;
+    }
+
+    public void setAuthorPath(String authorPath) {
+        this.authorPath = authorPath;
+    }
+
+    public String getTicketPath() {
+        return ticketPath;
+    }
+
+    public void setTicketPath(String ticketPath) {
+        this.ticketPath = ticketPath;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public int getId() {
         return id;
@@ -42,5 +94,13 @@ public class Task {
 
     public void setFixedRate(int fixedRate) {
         this.fixedRate = fixedRate;
+    }
+
+    public String getCoverPath() {
+        return coverPath;
+    }
+
+    public void setCoverPath(String coverPath) {
+        this.coverPath = coverPath;
     }
 }
