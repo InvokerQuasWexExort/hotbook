@@ -38,8 +38,11 @@ public class CrawlerEngine {
                         String ticket = parseElement(element,task.getTicketPath());
                         String coverUrl = parseElement(element,task.getCoverPath());
                         Book book = new Book();
+                        book.setSourceId(task.getSourceId());
                         book.setName(name);
                         book.setAuthor(author);
+                        book.setUrl(url);
+                        book.setImg(coverUrl);
                         System.out.println(name);
                     }
                 } else {

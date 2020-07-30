@@ -13,7 +13,6 @@ public class Book {
     private int id;
     private String name;//书名
     private String author;//作者
-    private String source;//来源
     private int sourceId;//来源id
     private String url;//原文链接
     private String tag;//标签
@@ -58,14 +57,6 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
     }
 
     public String getUrl() {
