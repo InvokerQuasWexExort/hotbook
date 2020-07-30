@@ -6,4 +6,13 @@
     <select id="findById" resultType="com.learn.hotbook.domain.Book">
         select * from t_book where id=#{id};
     </select>
+
+    <insert id="insertBatch">
+        INSERT INTO t_book
+        (id, name, del_flag)
+        VALUES
+        <foreach collection ="list" item="book" separator =",">
+            (#{book.id}, #{book.name}, #{book.delFlag})
+        </foreach >
+    </insert>
 </mapper>
