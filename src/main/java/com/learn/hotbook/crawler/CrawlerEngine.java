@@ -2,7 +2,6 @@ package com.learn.hotbook.crawler;
 
 import com.alibaba.fastjson.JSONObject;
 import com.learn.hotbook.domain.Task;
-import com.learn.hotbook.mapper.BookMapper;
 import com.learn.hotbook.domain.Book;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -37,8 +36,10 @@ public class CrawlerEngine {
                         String author = parseElement(element,task.getAuthorPath());
                         String url = parseElement(element,task.getUrlPath());
                         String ticket = parseElement(element,task.getTicketPath());
+                        String coverUrl = parseElement(element,task.getCoverPath());
                         Book book = new Book();
                         book.setName(name);
+                        book.setAuthor(author);
                         System.out.println(name);
                     }
                 } else {

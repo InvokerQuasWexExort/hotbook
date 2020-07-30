@@ -23,9 +23,7 @@ public class ScheduleEngine {
     protected void excuteOnefixedRate() {
         List<Task> taskList = taskService.getTaskList(1);
         if (!taskList.isEmpty()) {
-            taskList.forEach(task -> {
-                crawler.parseHtml(task);
-            });
+            taskList.forEach(task -> crawler.parseHtml(task));
         }
     }
 
@@ -33,9 +31,8 @@ public class ScheduleEngine {
     protected void excuteThreefixedRate() {
         List<Task> taskList = taskService.getTaskList(3);
         if (!taskList.isEmpty()) {
-            taskList.forEach(task -> {
-                crawler.parseHtml(task);
-            });
+            taskList.forEach(task ->
+                    crawler.parseHtml(task));
         }
     }
 }
